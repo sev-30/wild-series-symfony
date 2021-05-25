@@ -1,0 +1,38 @@
+// assets/styles/global.scss
+
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+
+:root
+{
+    --primary:#054664;
+    --secondary:#FF572E;
+    --light:#F0DAD5;
+
+    --main-font:'trochut, regular';
+    --title-font:'rum raisin, regular';
+}
+
+
+// customize some Bootstrap variables
+
+
+body {
+    background-color: #054664;
+    font-family: var(--main-font);
+
+}
+
+.navbar_series{
+    background-color: var(--light);
+    color: var(--primary);
+    font-family: var(--main-font);
+}
+
+.dropdown-menu{
+    background-color: var(--light);
+    color: var(--primary);
+}
+
+
+
