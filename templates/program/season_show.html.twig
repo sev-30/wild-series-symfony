@@ -1,21 +1,40 @@
-
 {% extends "base.html.twig" %}
+{% block title %}Wild Séries | 
+		Serie
+	{{ program.title }}
+	Season
+	{{ season.number }}
+{% endblock %}
 
 {% block body %}
 
-<div class="media">
-  <img class="align-self-start mr-3" src="{{ program.poster }}" alt="{{ program.title }} poster">
-  <div class="media-body">
-    <h1 class="mt-0">{{ program.title }}</h1>
-    <p>{{ program.synopsis }}</p>
-    <p>Catégorie : {{ program.category.name }}</p>
-    <p>Saison {{ seasons.number }}</p>
-    {% for episode in episodes %}
-        <ul>
-            <li>Titre : {{ episode.title }} - Synopsis : {{ episode.synopsis }}</li>
-        </ul>
-    {% endfor %}
-  </div>
-</div>
+	<div class="media">
+		<img class="align-self-start mr-3" src="{{ program.poster }}" alt="{{ program.title }} poster">
+		<div class="media-body">
+			<h1 class="mt-0">{{ program.title }}</h1>
+			<h2>Saison n°
+				{{ season.number }}</h2>
+			<p>
+				<span class="fw-bold">Description:
+				</span>
+				{{ season.description }}</p>
 
-{% endblock %}
+			{% for episode in episodes %}
+
+				<a class="my-3 d-block" href="{{ path("program_episode_show", {"program_id": program.id, "season_id": season.id, "episode_id": episode.id}) }}">
+					<p>
+						<span class="fw-bold">Episode
+							{{episode.number}}</span>
+						:
+						{{ episode.title }}</p>
+				</a>
+			{% endfor %}
+
+		</div>
+		<a class="d-block m-auto mx-5 my-5" href="{{ path('program_index') }}">
+			Retour à la liste des programmes
+		</a>
+	</div>
+
+
+</section>{% endblock %}
