@@ -9,7 +9,7 @@
         {% for program in programs %}
             <div>
                 <h2>Série {{ program.id }} : {{ program.title }} </h2>
-                <a href="{{ path("program_show", { id: program.id }) }}">Voir la fiche <p>{{ program.summary }}</p></a>
+                <a href="{{ path("program_show", { id: program.id }) }}">Voir la fiche <p>{{ program.synopsis }}</p></a>
             </div>
         {% else %}
             Aucune série trouvée.
