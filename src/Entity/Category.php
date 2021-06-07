@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\Category1Repository;
+use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=Category1Repository::class)
+ * @ORM\Entity(repositoryClass=CategoryRepository::class)
  */
 class Category
 {
