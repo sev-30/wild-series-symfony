@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Controller;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -7,8 +9,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Program;
 use App\Entity\Category;
 use App\Form\CategoryType;
+use App\Repository\CategoryRepository;
+use App\Repository\ProgramRepository;
 
-
+/**
+* @Route("/categories", name="category_")
+*/
 
 class CategoryController extends AbstractController
 {
@@ -17,7 +23,7 @@ class CategoryController extends AbstractController
     * The controller for the category add form
     * Display the form or deal with it
     *
-    * @Route("/categories/new", name="new")
+    * @Route("/new", name="new")
     */
 
     public function new(Request $request) : Response
@@ -38,7 +44,7 @@ class CategoryController extends AbstractController
 
         // Was the form submitted ?
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
         // Deal with the submitted data
         // Get the Entity Manager
