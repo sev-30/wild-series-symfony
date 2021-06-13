@@ -6,9 +6,12 @@ use App\Repository\ProgramRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=ProgramRepository::class)
+ * @UniqueEntity("title", message="ce titre existe déjà")
  */
 class Program
 {
@@ -20,13 +23,17 @@ class Program
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="ne me laisse pas tout vide")
+     * @Assert\Length(max="255", maxMessage="Le titre saisie est trop long, il ne devrait pas dépasser {{ limit }} caractères")
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+     * @Assert\NotBlank(message="ne me laisse pas tout vide")
+     * @ORM\Column(type="text", nullable = false)
+    */
+
     private $synopsis;
 
     /**
@@ -36,7 +43,7 @@ class Program
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class , inversedBy="programs")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $category;
 
