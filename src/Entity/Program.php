@@ -9,9 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+
 /**
  * @ORM\Entity(repositoryClass=ProgramRepository::class)
- * @UniqueEntity("title", message="ce titre existe déjà")
+ *  @UniqueEntity("title", message="ce titre existe déjà")
  */
 class Program
 {
@@ -25,15 +26,13 @@ class Program
     /**
      * @Assert\NotBlank(message="ne me laisse pas tout vide")
      * @Assert\Length(max="255", maxMessage="Le titre saisie est trop long, il ne devrait pas dépasser {{ limit }} caractères")
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255, unique=true) 
      */
     private $title;
 
     /**
-     * @Assert\NotBlank(message="ne me laisse pas tout vide")
-     * @ORM\Column(type="text", nullable = false)
+     * @ORM\Column(type="text", nullable=false)
     */
-
     private $synopsis;
 
     /**
@@ -98,7 +97,7 @@ class Program
 
     public function setSynopsis(string $synopsis): self
     {
-        $this->synopsys = $synopsis;
+        $this->synopsis = $synopsis;
 
         return $this;
     }
